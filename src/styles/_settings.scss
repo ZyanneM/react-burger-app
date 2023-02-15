@@ -1,0 +1,40 @@
+// Contient les réglages généraux (font faces, variables fonts, couleurs, mixin, boxsizing etc
+//mixin c'est comme une variable qui contient tout un bloc de lignes css qu'on pourra réutiliser en appelant @include nomdelamixin
+
+@font-face {
+  font-family: "font-1";
+  src: url(../assets/fonts/horseshoes.ttf);
+}
+
+$font-1: "font-1", sans-serif;
+
+$color-1: #61dafb;
+$color-2: salmon;
+$color-3: #282c34;
+$white: rgb(243, 243, 243);
+
+@mixin verticalCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+  @include verticalCenter;
+}
+
+body {
+  background: $white;
+  font-family: $font-1;
+  @include verticalCenter;
+}
+li {
+  list-style-type: none;
+}
