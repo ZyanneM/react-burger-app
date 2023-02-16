@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "../components/Header";
 import Navigation from "../components/Navigation";
+import Product from "../components/Product";
+import menuSucre from "../components/MenuSucre";
 
 const Desserts = () => {
   return (
@@ -8,7 +10,10 @@ const Desserts = () => {
       <Header />
       <div className="app-container">
         <Navigation />
-        <div className="product-container"></div>
+        <div className="product-container">
+        {menuSucre
+            .map((product) => <Product key={product.id} product={product} />)}
+        </div>
         <div className="order-container">
           <h2>Votre Commande</h2>
           <div className="product-list"></div>

@@ -1,67 +1,33 @@
 import React from "react";
 
-class Product extends React.Component {
-render() {
-    const productsList = [
-{
-id:1,
-name:"PHP Burger", 
-price:5.95+"€", 
-picture:"/images/product1.png"
-},
+// import menu from "./Menu";
 
-{
-id:2, 
-name:"Burger de la mort",
-price:8.95+"€", 
-picture:"/images/product2.png"
-},
+// J'ai gardé uniquement la logique de l'affichage de la carte
+//Le contenu est injecté quand j'appelle le composant dans la page
+const Product = ({product}) => {
+   
 
-{
-id:3, name:"Javascript Burger", 
-price:3.95+"€", 
-picture:"/images/product3.png"
-},
+    const handleClick = () => {
+      const cart = document.querySelector('.product-list');
+      const contenu = (document.getElementById('1')).innerHTML;
+     
+    
+      // alert('You clicked');
+    cart.innerHTML = contenu;
 
-{
-id:4, 
-name:"NoWrap Poulet", 
-price:5.95+"€", 
-picture:"/images/product4.png"
-},
 
-{
-id:5, 
-name:"Tower of Heroes",
-price:8.95+"€",
-picture:"/images/product5.png"
-},
+    }
 
-{
-id:6, 
-name:"Salade React Healthy", 
-price:3.95+"€", 
-picture:"/images/product6.png"
-}
-];
-
-const singleProduct = productsList.map((product, index) =>
-      <div key={index} className="single-container" id={product.id} >
+    return (
+      <div className="single-container" id={product.id} >
         <p>{product.name}</p>
         <div className="product-img-container">
-            <img className="product-img" src={product.picture} alt="" />
+            <img className="product-img" src={product.picture} onClick={handleClick} alt="" />
         </div>
         <p>{product.price}</p>
       </div>
 );
 
-return (
-    <>
-    {singleProduct}
-    </>
-);
-
-}
-}
+};
 
 export default Product;
