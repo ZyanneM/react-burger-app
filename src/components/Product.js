@@ -7,26 +7,29 @@ import React from "react";
 const Product = ({product}) => {
    
 
-    const handleClick = () => {
-      const cart = document.querySelector('.product-list');
-      const contenu = (document.getElementById('1')).innerHTML;
-     
-    
-      // alert('You clicked');
-    cart.innerHTML = contenu;
+  const handleClick = () => {
+    const cart = document.querySelector('.product-list');
+    const contenu = document.getElementById('1').innerHTML;
+    console.log(contenu);
+   
+  
+    // alert('You clicked');
+  cart.innerHTML = contenu;
 
 
-    }
+  }
 
     return (
       <div className="single-container" id={product.id} >
         <p>{product.name}</p>
         <div className="product-img-container">
-            <img className="product-img" src={product.picture} onClick={handleClick} alt="" />
+            <img className="product-img" src={product.picture} onClick={() => handleClick()} alt="" />
         </div>
         <p>{product.price}</p>
       </div>
 );
+
+
 
 };
 
