@@ -3,47 +3,51 @@ import { useState} from "react";
 import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import Product from "../components/Product";
-import menu from "../components/Menu";
 import Panier from "../components/Panier";
+import Plats from "../components/Plats";
+import Desserts from "../components/Desserts";
 
 const Homepage = () => {
+  const [toggleState, setToggleState] = useState(1);
+
   const [message, setMessage] = useState("Il n'y a aucun produit dans votre panier.");
 
-  const [menuSale, setMenuSale] = useState(menu);
+  const [ordered, setOrdered] = useState([]);
 
-
-  function handleProductPress(buttonId) {
-    // cette fonction a besoin d'un argument
-    // qui dépend du composant enfant qui l'appelle ici le composant product duquel elle récupère l'id
-    alert(`Le produit ${buttonId} a été pressé !`);
-  }
-
-  const productList = menuSale.map(product =>
-    <Product key={product.id} 
-    details={product} 
-    id={product.id}
-    onProductPress={handleProductPress}
+  const orderedList = ordered.map(order =>
+    <Product key={order.id} 
+    details={order} 
+    id={order.id}
     />)
 
+
+    const toggleTab = (index) => {
+      setToggleState(index);
+    }
 
   return (
     <React.Fragment>
       <Header />
       <div className="app-container">
-        <Navigation />
-        <div className="product-container">
-          {productList}
+        <Navigation 
+        //On déclare les props pour pouvoir les appeler dans le composant
+        toggleTab={toggleTab}
+        toggleState={toggleState}/>
+        <div className="products">
+          {/* //Les accolades retournent une expression, ici un opérateur ternaire */}
+          <div className={toggleState === 1 ? 'content active-content' : 'content'}>
+            <Plats />
+          </div>
+          <div className={toggleState === 2 ? 'content active-content' : 'content'}>
+          <Desserts />
+          </div>
         </div>
         <Panier 
-        message={message}/>
-        </div>
+        message={message}
+        orderedList = {orderedList}/>
+      </div>
     </React.Fragment>
   );
 };
-
-const container = document.querySelector('.product-list');
-
-
-
 
 export default Homepage;

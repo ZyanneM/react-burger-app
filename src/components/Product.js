@@ -5,7 +5,7 @@ import React from "react";
 //Le contenu est injecté quand j'appelle le composant dans la page
 //Entre accolade va signifier que la prop attendue est un objet
 const Product = (props) => {
-  const id = props.id;
+  const id = props.details.id;
 
     return (
       <div className="single-container" id={props.details.id}>

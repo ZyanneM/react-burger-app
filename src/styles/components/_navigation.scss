@@ -9,7 +9,6 @@
       padding: 10px;
 
       li {
-        color: black;
         transition: 0.2s;
         cursor: pointer;
 
@@ -17,6 +16,14 @@
           color: $color-3;
         }
       }
+    }
+    
+    .tabs {
+      color: black;
+    }
+    
+    .active-tabs {
+      color: red;
     }
 
     .nav-active {
@@ -49,3 +56,4 @@
     }
   }
 }
+

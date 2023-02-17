@@ -7,16 +7,22 @@ import menuSucre from "../components/MenuSucre";
 import Panier from "../components/Panier";
 
 const Desserts = () => {
-  const [message, setMessage] = useState("Il n'y a aucun produit dans votre panier.");
 
   const [menuDesserts, setMenuDesserts] = useState(menuSucre);
 
-  
-  function handleProductPress(productId) {
     // cette fonction a besoin d'un argument
     // qui dépend du composant enfant qui l'appelle ici le composant product duquel elle récupère l'id
-    alert(`Le produit ${productId} a été pressé !`);
-  }
+    function handleProductPress(productId) {
+      //Je récupère la div correspondante à celle cliquée
+      const container = document.getElementById('cart');
+      const clickedProduct = document.getElementById(productId);
+      const cloneClickedProduct = clickedProduct.cloneNode(true);
+  
+      container.appendChild(cloneClickedProduct);
+       
+      // setMessage('Bon appétit !');
+      // alert(`Le produit ${productId} a été pressé !`);
+    }
 
   const productList = menuDesserts.map(product =>
     <Product key={product.id} 
@@ -28,14 +34,8 @@ const Desserts = () => {
 
   return (
     <React.Fragment>
-      <Header />
-      <div className="app-container">
-        <Navigation />
         <div className="product-container">
         {productList}
-        </div>
-        <Panier
-        message={message}/>
         </div>
     </React.Fragment>
   );
