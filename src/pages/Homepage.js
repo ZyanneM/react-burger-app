@@ -23,7 +23,7 @@ const Homepage = () => {
 
     container.appendChild(cloneClickedProduct);
      
-
+    setMessage("Bon appétit !")
     // alert(`Le produit ${productId} a été pressé !`);
     // setMessage('Bon appétit !');
   }

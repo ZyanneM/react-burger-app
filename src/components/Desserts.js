@@ -1,10 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import Header from "../components/Header";
-import Navigation from "../components/Navigation";
 import Product from "../components/Product";
 import menuSucre from "../components/MenuSucre";
-import Panier from "../components/Panier";
 
 const Desserts = (props) => {
 
