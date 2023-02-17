@@ -1,32 +1,20 @@
 import React from "react";
 
-// import menu from "./Menu";
 
 // J'ai gardé uniquement la logique de l'affichage de la carte
 //Le contenu est injecté quand j'appelle le composant dans la page
-const Product = ({product}) => {
-   
-
-  const handleClick = () => {
-    const cart = document.querySelector('.product-list');
-    const contenu = document.getElementById('1').innerHTML;
-    console.log(contenu);
-   
-  
-    // alert('You clicked');
-  cart.innerHTML = contenu;
-
-
-  }
+//Entre accolade va signifier que la prop attendue est un objet
+const Product = (props) => {
 
     return (
-      <div className="single-container" id={product.id} >
-        <p>{product.name}</p>
+      <div className="single-container" id={props.details.id}>
+        <p>{props.details.name}</p>
         <div className="product-img-container">
-            <img className="product-img" src={product.picture} onClick={() => handleClick()} alt="" />
+            <img className="product-img" src={props.details.picture} alt=""/>
         </div>
-        <p>{product.price}</p>
+        <p>{props.details.price}</p>
       </div>
+      
 );
 
 

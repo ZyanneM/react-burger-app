@@ -12,7 +12,10 @@ const Desserts = () => {
         <Navigation />
         <div className="product-container">
         {menuSucre
-            .map((product) => <Product key={product.id} product={product} />)}
+            .map((product) => <Product 
+            key={product.id} 
+            product={product}
+            id={product.id} />)}
         </div>
         <div className="order-container">
           <h2>Votre Commande</h2>

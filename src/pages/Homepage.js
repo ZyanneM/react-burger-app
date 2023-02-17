@@ -7,21 +7,29 @@ import menu from "../components/Menu";
 import Panier from "../components/Panier";
 
 const Homepage = () => {
-  
+  const [message, setMessage] = useState("Il n'y a aucun produit dans votre panier.");
+
+  const [menuSale, setMenuSale] = useState(menu);
+
+  const productList = menuSale.map(product =>
+    <Product key={product.id} 
+    details={product} 
+    id={product.id}
+    />)
+
+
   return (
-    <div>
+    <React.Fragment>
       <Header />
       <div className="app-container">
         <Navigation />
         <div className="product-container">
-  {/* J'appelle mon tableau, je map, je lui passe en paramètre product qui représente chaque élément de mon tableau et j'appelle mon composant Product, je lui applique une clé unique et je lui donne le paramètre product qui sera égal à l'objet product*/}
-          {menu
-            .map((product) => <Product key={product.id} product={product} />)}
+          {productList}
         </div>
-        <Panier />
+        <Panier 
+        message={message}/>
         </div>
-        {/* <img src="/images/product1.png" alt="burger 1" /> */}
-      </div>
+    </React.Fragment>
   );
 };
 
