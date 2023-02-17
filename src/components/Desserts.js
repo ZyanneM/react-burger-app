@@ -6,29 +6,15 @@ import Product from "../components/Product";
 import menuSucre from "../components/MenuSucre";
 import Panier from "../components/Panier";
 
-const Desserts = () => {
+const Desserts = (props) => {
 
   const [menuDesserts, setMenuDesserts] = useState(menuSucre);
-
-    // cette fonction a besoin d'un argument
-    // qui dépend du composant enfant qui l'appelle ici le composant product duquel elle récupère l'id
-    function handleProductPress(productId) {
-      //Je récupère la div correspondante à celle cliquée
-      const container = document.getElementById('cart');
-      const clickedProduct = document.getElementById(productId);
-      const cloneClickedProduct = clickedProduct.cloneNode(true);
-  
-      container.appendChild(cloneClickedProduct);
-       
-      // setMessage('Bon appétit !');
-      // alert(`Le produit ${productId} a été pressé !`);
-    }
 
   const productList = menuDesserts.map(product =>
     <Product key={product.id} 
     details={product} 
     id={product.id}
-    onProductPress={handleProductPress}
+    onProductPress={props.addDessert}
     />)
 
 
