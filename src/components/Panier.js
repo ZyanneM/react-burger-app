@@ -4,14 +4,14 @@ import { useState } from "react";
 const Panier = (props) => {
    const [count, setCount] = useState(0);
 
-   const [message, setMessage] = useState("Il n'y a aucun produit dans votre panier.");
 
     return (
         <div className="order-container">
         <h2>Votre Commande</h2>
-        <p>{props.message}</p>
+        <p className="msg">{props.message}</p>
           <div className="product-list" id="cart">
             {props.orderedList}
+            <button className='clear' onClick={props.clearCart}>Vider le panier</button>
           </div>
         </div>
     );
