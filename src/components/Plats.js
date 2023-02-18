@@ -16,6 +16,7 @@ const Plats = (props) => {
     details={product} 
     id={product.id}
     onProductPress={props.addPlat}
+    copyDiv={props.copy}
     />)
 
 
