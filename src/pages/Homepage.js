@@ -13,13 +13,16 @@ const Homepage = () => {
   const [message, setMessage] = useState("Il n'y a aucun produit dans votre panier.");
 
   //Je vais chercher le nombre de produits dans le panier
-  var productNb = document.querySelectorAll(".product-list > div");
+  const productNb = document.querySelectorAll(".product-list > div");
+  var cartLength = productNb.length;
+  console.log(productNb.length);
 
   // const Msg = () => {
-  //   setMessage("Il n'y a toujours rien");
-  const [ordered, setOrdered] = useState([]);
-  // }
-  
+    //   setMessage("Il n'y a toujours rien");
+    const [ordered, setOrdered] = useState([]);
+    // }
+    const [toggleBtn, setToggleBtn] = useState(0);
+    
   function clearCart() {
     // const container = document.getElementById('cart');
     // while (container.firstChild) {
@@ -45,15 +48,17 @@ const Homepage = () => {
    
 
     if(productNb.length+1 === 1){
+    setToggleBtn(1);
     setMessage(`Il y a ${productNb.length+1} produit dans votre panier`)
-    }else{
+    }else if(productNb.length+1 > 1){
       setMessage(`Il y a ${productNb.length+1} produits dans votre panier`)
     }
-
    
     // alert(`Le produit ${productId} a été pressé !`);
     // setMessage('Bon appétit !');
   }
+
+ 
 
   function clearCart() {
     const container = document.getElementById('cart');
@@ -61,6 +66,8 @@ const Homepage = () => {
         // Supprimer la div enfant de l'élément parent
         container.removeChild(container.firstChild);
       }
+      setToggleBtn(0);
+      setMessage("Il n'y a aucun produit dans votre panier.")
     } 
 
   const orderedList = ordered.map(order =>
@@ -99,6 +106,7 @@ const Homepage = () => {
         clearCart={clearCart}
         message={message}
         orderedList = {orderedList}
+        toggleBtn = {toggleBtn}
          />
       </div>
     </React.Fragment>
