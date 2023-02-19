@@ -32,18 +32,23 @@ const Homepage = () => {
     alert('Clic');
     }
 
-  function handleProductPress(productId) {
+  function handleProductPress(productId, name) {
    
     //Je récupère la div correspondante à celle cliquée
     const container = document.getElementById('cart');
-   
     const clickedProduct = document.getElementById(productId);
     const cloneClickedProduct = clickedProduct.cloneNode(true);
 
     container.appendChild(cloneClickedProduct);
-        
-       
-    const panier = document.querySelector('.order-container');
+    // const copyOrdered = [...ordered];
+
+    // copyOrdered.push(clickedProduct);
+
+    // setOrdered(copyOrdered);
+
+    // console.log(ordered);
+
+    // const panier = document.querySelector('.order-container');
     // const clearBtn = document.createElement('button');
    
 
